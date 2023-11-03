@@ -27,7 +27,7 @@ public class AdminService {
         return adminModel;
     }
 
-    public List<AdminModel> getAdmin() {
+    public List<AdminModel> getAllAdmins() {
         List<Admin> admins = adminRepositary.findAll();
 
         List<AdminModel> adminModels = admins.stream()
@@ -46,5 +46,21 @@ public class AdminService {
         return true;
 
     }
+
+    public AdminModel getAdminById(int id) {
+        Admin admin = adminRepositary.findById(id).get();
+        AdminModel adminModel = new AdminModel();
+        BeanUtils.copyProperties(admin, adminModel);
+        return adminModel;
+    }
+
+    // public AdminModel updateAdmin(AdminModel adminModel) {
+    // Admin admin =adminRepositary.getById(null)
+    // if (admin.getId() != null) {
+    // Admin admin = adminRepository.save(admin);
+    // return admin;
+    // }
+    // return null;
+    // }
 
 }

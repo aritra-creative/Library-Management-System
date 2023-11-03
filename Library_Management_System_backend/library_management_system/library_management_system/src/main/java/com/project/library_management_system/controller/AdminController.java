@@ -27,9 +27,13 @@ public class AdminController {
     }
 
     @GetMapping("/admins")
-    public List<AdminModel> getAdmin() {
-        System.out.println("working");
-        return adminService.getAdmin();
+    public List<AdminModel> getAllAdmins() {
+        return adminService.getAllAdmins();
+    }
+
+    @GetMapping("/admin/{id}")
+    public AdminModel getAdminById(@PathVariable int id) {
+        return adminService.getAdminById(id);
     }
 
     @DeleteMapping("/admin/{id}")
@@ -40,5 +44,9 @@ public class AdminController {
         response.put("deleted", deleted);
         return ResponseEntity.ok(response);
     }
+
+    // public AdminModel updateAdmin(@RequestBody AdminModel adminModel) {
+    // return adminService.updateAdmin(adminModel);
+    // }
 
 }
