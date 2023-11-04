@@ -36,6 +36,10 @@ public class StudentController {
         return studentService.getStudentById(id);
     }
 
+    public long findTotalStudent() {
+        return studentService.findTotalStudent();
+    }
+
     @DeleteMapping("/student/{id}")
     public ResponseEntity<Map<String, Boolean>> deleteStudent(@PathVariable int id) {
         boolean deleted = false;

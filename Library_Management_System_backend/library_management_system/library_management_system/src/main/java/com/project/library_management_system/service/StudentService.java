@@ -5,11 +5,13 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.project.library_management_system.entity.Student;
 import com.project.library_management_system.models.StudentModel;
 import com.project.library_management_system.repositary.StudentRepositary;
 
+@Service
 public class StudentService {
     @Autowired
     private StudentRepositary studentRepositary;
@@ -48,6 +50,10 @@ public class StudentService {
         StudentModel studentModel = new StudentModel();
         BeanUtils.copyProperties(student, studentModel);
         return studentModel;
+    }
+
+    public long findTotalStudent() {
+        return studentRepositary.count();
     }
 
 }
